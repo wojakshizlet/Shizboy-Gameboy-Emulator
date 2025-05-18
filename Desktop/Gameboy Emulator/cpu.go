@@ -40,13 +40,18 @@ func (r *registers) deGetRegister() uint16 { //
 	// todo: implement register functionality here
 	return uint16(r.d)<<8 | uint16(r.e)
 }
-func deSetRegister() { //
+func (r *registers) deSetRegister(value uint16) { //
 	// todo: implement register functionality here
+	r.d = uint8((value & 0xFF00) >> 8)
+	r.e = uint8(value & 0x00FF)
 }
 
-func hlGetRegister() { //
+func (r *registers) hlGetRegister() uint16 { //
 	// todo: implement register functionality here
+	return uint16(r.h)<<8 | uint16(r.l)
 }
-func hlSetRegister() { //
+func (r *registers) hlSetRegister(value uint16) { //
 	// todo: implement register functionality here
+	r.h = uint8((value & 0xFF00) >> 8)
+	r.l = uint8(value & 0x00FF)
 }
