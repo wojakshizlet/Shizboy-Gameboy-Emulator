@@ -4,11 +4,9 @@ import "fmt"
 
 func main() {
 	fmt.Println("Hello World!")
-
 }
 
 type registers struct { // declare a struct containing unsigned 8 bit registers
-
 	a uint8 //accumulator
 	b uint8 //loop counter
 	c uint8 //used in tandem with b, for bc, for unsigned 16 bit registers
@@ -23,6 +21,13 @@ type registers struct { // declare a struct containing unsigned 8 bit registers
 	de uint8 //storing memory addresses or I/O
 	hl uint8 //the address register pair. used for referencing memory addresses. (high byte + low byte)
 	// some register instructions may also increment or decrement 'hl' after use. like a memory cursor to a loop.
+}
+
+type flagRegisters struct {
+	zero      bool
+	subtract  bool
+	halfCarry bool
+	carry     bool
 }
 
 func (r *registers) bcGetRegister() uint16 { //
